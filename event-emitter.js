@@ -1,10 +1,11 @@
-const eventEmitter = require('events');
+const EventEmitter = require('events');
+// creating instance of EVentEmitter
+const emitter = new EventEmitter();
 
-const customEmitter = new eventEmitter();
-customEmitter.on('response', (name, id)=>{
-    console.log(`got data: ${name} ${id}`)
+// register a listener
+emitter.on('messageLogged', ()=>{
+    console.log("Listener called");
 })
-customEmitter.on('response', ()=>{
-    console.log('another logic')
-})
-customEmitter.emit('response', 'win', 35);
+
+// raise an event
+emitter.emit('messageLogged')
